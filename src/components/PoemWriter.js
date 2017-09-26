@@ -5,7 +5,8 @@ class PoemWriter extends React.Component {
     super();
 
     this.state = {
-      value:''
+      value:'',
+      error:''
     };
   }
 
@@ -13,10 +14,22 @@ class PoemWriter extends React.Component {
   this.setState({
     value: event.target.value,
   });
-  function poemCheck(value) {
+  () => {
+    if (!this.state.value) {
+      this.setState({
+        error: true
+      })
+    // } else if () {
+      // this.state.error = true
+    } else if (this.state.value.match(/\S+/g).length) {
+      this.setState({
+        error: false
+      })
+    }
+
     // var linecount = value.match(^\r\n).length
-    var wordcount = value.match(/\S+/g).length;
-    poem-validation-error
+    // var wordcount = value.match(/\S+/g).length;
+    // poem-validation-error
   }
 
 }
